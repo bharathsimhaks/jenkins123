@@ -10,7 +10,7 @@ pipeline {
                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'JenkinsGIT', url: 'https://github.com/bharathsimhaks/jenkins123.git']])
             }
         }
-        stage('Building image') {
+        stage('Building images') {
             steps {
                 script {
                     dockerImage = docker.build("${registry}:${dockerImageTag}")
