@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        registry = "288214676350.dkr.ecr.ap-south-1.amazonaws.com/myecrrepo"
+        registry = "605176584238.dkr.ecr.us-east-1.amazonaws.com/myecr"
         dockerImageTag = "1.0" // Specify your desired tag here
     }
     stages {
@@ -20,7 +20,7 @@ pipeline {
         stage('Pushing to ECR') {
             steps {
                 script {
-                    sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 288214676350.dkr.ecr.ap-south-1.amazonaws.com'
+                    sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 605176584238.dkr.ecr.us-east-1.amazonaws.com'
                     sh "docker push ${registry}:${dockerImageTag}"
                 }
             }
